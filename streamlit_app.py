@@ -9,35 +9,54 @@ st.set_page_config(page_title="今天吃什麼？美食轉盤", page_icon="🍱"
 # --- 1. CSS 修正：確保文字顏色為深灰色/黑色 ---
 st.markdown("""
     <style>
-    /* 設定背景色 */
-    .stApp { background-color: #FDFCF0; }
-    
-    /* 修正主標題 (st.title) 顏色 */
-    h1 {
-        color: #FF4B2B !important;  /* 使用橘紅色讓標題顯眼 */
-        font-weight: 800 !important;
+    /* 全域背景色 - 舒服的米白色 */
+    .stApp {
+        background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
     }
 
-    /* 修正副標題或一般文字顏色 */
-    .stMarkdown p {
-        color: #444444 !important;
+    /* 修正標題文字顏色 */
+    h1 {
+        color: #d35400 !important;
+        font-family: 'Helvetica Neue', sans-serif;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
-    
-    /* 餐廳卡片內部文字 */
+
+    /* 餐廳卡片美化 */
     .res-card {
-        background-color: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border-left: 10px solid #FF4B2B;
-        margin-bottom: 20px;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: none;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
     }
-    .res-card h2 { color: #222222 !important; }
-    .res-card p { color: #444444 !important; }
-    
-    /* 按鈕文字顏色 (確保是白色) */
+    .res-card:hover {
+        transform: translateY(-5px);
+    }
+    .res-card h2 { color: #2c3e50 !important; font-size: 1.5rem !important; }
+    .res-card p { color: #7f8c8d !important; }
+
+    /* 按鈕樣式：改為活力漸層色 */
     div.stButton > button {
+        background: linear-gradient(45deg, #FF512F, #DD2476) !important;
         color: white !important;
+        border: none !important;
+        padding: 0.6rem 2rem !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 15px rgba(221, 36, 118, 0.3) !important;
+    }
+    
+    /* 導航按鈕樣式 (st.link_button) */
+    div.stLinkButton > a {
+        background-color: #34495e !important;
+        color: white !important;
+        border-radius: 50px !important;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        padding: 0.5rem 1rem;
     }
     </style>
     """, unsafe_allow_html=True)
