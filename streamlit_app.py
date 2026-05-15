@@ -67,6 +67,35 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(221, 36, 118, 0.25) !important;
     }
 
+    /* 美化 streamlit-geolocation 的按鈕 */
+    .streamlit-geolocation > button {
+        background-color: #f0f2f6 !important; /* 淺灰色背景 */
+        color: #31333f !important; /* 深灰色文字 */
+        border-radius: 999px !important; /* 圓角 */
+        padding: 0.5rem 1rem !important; /* 內邊距 */
+        border: 1px solid #d1d5db !important; /* 細邊框 */
+        font-weight: 500 !important; /* 中等粗細字體 */
+        transition: background-color 0.3s ease !important; /* 漸變效果 */
+        display: flex !important; /* 水平排列 */
+        align-items: center !important; /* 垂直居中 */
+        gap: 0.5rem !important; /* 圖示和文字間距 */
+    }
+
+    .streamlit-geolocation > button:hover {
+        background-color: #e5e7eb !important; /* 滑鼠懸停時的顏色 */
+    }
+
+    .streamlit-geolocation > button:active {
+        background-color: #d1d5db !important; /* 按下時的顏色 */
+    }
+    
+    /* 調整圖示大小和顏色 */
+    .streamlit-geolocation > button svg {
+        width: 1rem !important;
+        height: 1rem !important;
+        fill: #31333f !important; /* 圖示顏色 */
+    }
+    
     div.stLinkButton > a {
         background-color: #34495e !important;
         color: white !important;
@@ -438,7 +467,9 @@ if st.session_state["target_lat"] and st.session_state["target_lng"]:
         if st.button("🔍 搜尋附近美食", use_container_width=True):
             reset_draw_state()
 
-            results = search_nearby_restaurants_cached(
+            # 使用自定義的 spinner
+            with st.spinner('正在尋找附近美食...'):
+                results = search_nearby_restaurants_cached(
                 api_key=api_key,
                 lat=st.session_state["target_lat"],
                 lng=st.session_state["target_lng"],
