@@ -1,3 +1,8 @@
 streamlit
 streamlit-js-eval
 googlemaps
+random
+time
+html
+math
+streamlit_geolocation
