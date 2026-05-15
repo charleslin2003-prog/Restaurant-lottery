@@ -5,6 +5,7 @@ import time
 import html
 from math import radians, sin, cos, sqrt, atan2
 from streamlit_geolocation import streamlit_geolocation
+from streamlit_js_eval import get_geolocation
 
 # -----------------------------
 # 基本設定
@@ -15,6 +16,14 @@ st.set_page_config(
     layout="centered"
 )
 
+# 建立一個好看的標準按鈕
+if st.button("📍 點我定位"):
+    loc = get_geolocation()
+    if loc:
+        st.session_state["target_lat"] = loc['coords']['latitude']
+        st.session_state["target_lng"] = loc['coords']['longitude']
+        st.success("定位成功！")
+        
 # -----------------------------
 # 自訂 CSS
 # -----------------------------
