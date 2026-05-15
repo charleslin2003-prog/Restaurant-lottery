@@ -1,3 +1,4 @@
 streamlit
 googlemaps
 streamlit-geolocation
+streamlit-js-eval
