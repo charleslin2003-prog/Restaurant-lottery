@@ -464,7 +464,7 @@ if st.session_state["target_lat"] and st.session_state["target_lng"]:
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        if st.button("🔍 搜尋附近美食", use_container_width=False):
+        if st.button("🔍 搜尋附近美食", use_container_width=True):
             reset_draw_state()
 
             # 使用自定義的 spinner
