@@ -21,7 +21,7 @@ st.set_page_config(
 st.markdown("""
 <style>
     .stApp {
-        background: linear-gradient(135deg, #F5DEB3 0%, #e2d1c3 100%);
+        background: linear-gradient(135deg, #F5DEB3 0%, #CD853F 100%);
     }
 
     h1 {
