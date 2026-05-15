@@ -15,14 +15,6 @@ st.set_page_config(
     page_icon="🍱",
     layout="centered"
 )
-
-# 建立一個好看的標準按鈕
-if st.button("📍 點我定位"):
-    loc = get_geolocation()
-    if loc:
-        st.session_state["target_lat"] = loc['coords']['latitude']
-        st.session_state["target_lng"] = loc['coords']['longitude']
-        st.success("定位成功！")
         
 # -----------------------------
 # 自訂 CSS
@@ -76,33 +68,40 @@ st.markdown("""
         box-shadow: 0 4px 15px rgba(221, 36, 118, 0.25) !important;
     }
 
-    /* 美化 streamlit-geolocation 的按鈕 */
-    .streamlit-geolocation > button {
-        background-color: #f0f2f6 !important; /* 淺灰色背景 */
-        color: #31333f !important; /* 深灰色文字 */
-        border-radius: 999px !important; /* 圓角 */
-        padding: 0.5rem 1rem !important; /* 內邊距 */
-        border: 1px solid #d1d5db !important; /* 細邊框 */
-        font-weight: 500 !important; /* 中等粗細字體 */
-        transition: background-color 0.3s ease !important; /* 漸變效果 */
-        display: flex !important; /* 水平排列 */
-        align-items: center !important; /* 垂直居中 */
-        gap: 0.5rem !important; /* 圖示和文字間距 */
-    }
-
-    .streamlit-geolocation > button:hover {
-        background-color: #e5e7eb !important; /* 滑鼠懸停時的顏色 */
-    }
-
-    .streamlit-geolocation > button:active {
-        background-color: #d1d5db !important; /* 按下時的顏色 */
+        /* 1. 隱藏原本的黑色長條背景 */
+    .streamlit-geolocation {
+        background-color: transparent !important;
+        padding: 0 !important;
     }
     
-    /* 調整圖示大小和顏色 */
-    .streamlit-geolocation > button svg {
-        width: 1rem !important;
-        height: 1rem !important;
-        fill: #31333f !important; /* 圖示顏色 */
+    /* 2. 把那個小圖示按鈕變大、變好看 */
+    .streamlit-geolocation > button {
+        background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%) !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px !important;
+        border-radius: 50px !important;
+        width: 100% !important; /* 讓它橫跨整個寬度 */
+        height: 45px !important;
+        font-weight: bold !important;
+        box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2) !important;
+        cursor: pointer !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* 3. 在按鈕裡面用 CSS 加字 (因為原套件只有圖示) */
+    .streamlit-geolocation > button::after {
+        content: " 點擊取得目前位置";
+        margin-left: 8px;
+        font-size: 14px;
+    }
+    
+    /* 4. 滑鼠移上去的效果 */
+    .streamlit-geolocation > button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 20px rgba(37, 117, 252, 0.3) !important;
     }
     
     div.stLinkButton > a {
