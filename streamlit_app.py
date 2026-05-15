@@ -41,8 +41,10 @@ st.markdown("""
     }
 
     .res-card:hover {
-        transform: translateY(-3px);
-    }
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(211, 84, 0, 0.15); /* 加入主題色的淡淡陰影 */
+    border: 1px solid #FF512F; /* 滑鼠移入時顯現細邊框 */
+}
 
     .res-card h2 {
         color: #2c3e50 !important;
@@ -82,6 +84,9 @@ st.markdown("""
     }
 
     .tag {
+        background: #fff5f0; /* 極淡的橘色 */
+        color: #e67e22; /* 餐廳類型用主題色 */
+        border: 1px solid #ffdecb;
         display: inline-block;
         background: #f4f4f5;
         color: #374151;
