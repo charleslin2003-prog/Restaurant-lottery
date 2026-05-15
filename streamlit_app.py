@@ -9,9 +9,21 @@ st.set_page_config(page_title="今天吃什麼？美食轉盤", page_icon="🍱"
 # --- 1. CSS 修正：確保文字顏色為深灰色/黑色 ---
 st.markdown("""
     <style>
+    /* 設定背景色 */
     .stApp { background-color: #FDFCF0; }
     
-    /* 強制設定卡片內文字顏色 */
+    /* 修正主標題 (st.title) 顏色 */
+    h1 {
+        color: #FF4B2B !important;  /* 使用橘紅色讓標題顯眼 */
+        font-weight: 800 !important;
+    }
+
+    /* 修正副標題或一般文字顏色 */
+    .stMarkdown p {
+        color: #444444 !important;
+    }
+    
+    /* 餐廳卡片內部文字 */
     .res-card {
         background-color: white;
         padding: 25px;
@@ -20,13 +32,12 @@ st.markdown("""
         border-left: 10px solid #FF4B2B;
         margin-bottom: 20px;
     }
-    .res-card h2 { color: #222222 !important; margin-bottom: 10px; }
-    .res-card p { color: #444444 !important; font-size: 16px; margin: 5px 0; }
+    .res-card h2 { color: #222222 !important; }
+    .res-card p { color: #444444 !important; }
     
-    /* 按鈕樣式 */
+    /* 按鈕文字顏色 (確保是白色) */
     div.stButton > button {
-        border-radius: 20px;
-        font-weight: bold;
+        color: white !important;
     }
     </style>
     """, unsafe_allow_html=True)
