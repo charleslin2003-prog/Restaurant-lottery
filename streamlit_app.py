@@ -22,7 +22,7 @@ st.markdown("""
 <style>
     /* 背景與標題 */
     .stApp {
-        background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        background: linear-gradient(135deg, ##FF8888 0%, #e2d1c3 100%);
     }
     h1 {
         color: #d35400 !important;
