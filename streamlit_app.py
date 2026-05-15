@@ -8,7 +8,8 @@ st.set_page_config(page_title="午餐吃什麼？", layout="centered")
 
 # 設定 Google Maps API (建議放在 Secrets 中)
 # st.secrets["GMAP_API_KEY"]
-gmaps = googlemaps.Client(key='YOUR_GOOGLE_MAPS_API_KEY')
+api_key = st.secrets["GMAP_API_KEY"]
+gmaps = googlemaps.Client(key=api_key)
 
 st.title("🍴 周圍餐廳隨機抽")
 
