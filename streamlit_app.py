@@ -50,22 +50,31 @@ if target_lat and target_lng:
         
         results = []
         for p in res.get('results', []):
+            # 產生 Google Maps 搜尋連結
+            # 格式：https://www.google.com/maps/search/?api=1&query=餐廳名&query_place_id=ID
+            place_id = p.get('place_id')
+            name = p['name']
+            map_url = f"https://www.google.com/maps/search/?api=1&query={name}&query_place_id={place_id}"
+            
             results.append({
-                '名稱': p['name'],
+                '名稱': name,
                 '評價': p.get('rating', 0),
                 '地址': p.get('vicinity', ''),
-                '評論數': p.get('user_ratings_total', 0)
+                '評論數': p.get('user_ratings_total', 0),
+                '地圖連結': map_url
             })
         
         st.session_state['res_list'] = results
         st.write(f"找到 {len(results)} 間餐廳")
 
-    if 'res_list' in st.session_state and st.session_state['res_list']:
-        if st.button('🎰 隨機抽一間'):
+    if st.button('🎰 隨機抽一間'):
             pick = random.choice(st.session_state['res_list'])
             st.balloons()
             st.info(f"今天推薦：**{pick['名稱']}**")
-            st.write(f"⭐ 評價：{pick['評價']} ({pick['評論數']}則)")
+            st.write(f"⭐ 評價：{pick['評價']} ({pick['評論數']} 則)")
             st.write(f"📍 地址：{pick['地址']}")
+            
+            # 加上按鈕跳轉至 Google Maps
+            st.link_button("🚀 帶我去這間餐廳", pick['地圖連結'])
 else:
     st.warning("請先完成定位（開啟 GPS 或輸入地址）。")
